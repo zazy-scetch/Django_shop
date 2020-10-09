@@ -48,7 +48,7 @@ def products(request):
     return render(request, "mainapp/products.html", content)
 
 
-def contacts(request):
+def contact(request):
     title = "о нас"
     visit_date = datetime.datetime.now()
     locations = [
@@ -67,4 +67,4 @@ def contacts(request):
         },
     ]
     content = {"title": title, "visit_date": visit_date, "locations": locations}
-    return render(request, "mainapp/contacts.html", content)
+    return render(request, "mainapp/contact.html", content)
