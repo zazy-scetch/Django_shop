@@ -1,4 +1,3 @@
-from os import truncate
 from django.db import models
 
 
@@ -21,3 +20,14 @@ class Product(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.category.name})"
+
+
+class Contact(models.Model):
+    phone = models.CharField(max_length=50, verbose_name="номер телефона")
+    email = models.EmailField(max_length=254, verbose_name="электронная почта")
+    city = models.CharField(max_length=128, default="Москва", verbose_name="город")
+    address = models.CharField(max_length=254, verbose_name="адресс")
+
+    def __str__(self):
+        return f"{self.pk} {self.email}"
+        
