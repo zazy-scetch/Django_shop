@@ -50,4 +50,3 @@ def contacts(request):
     locations = Contact.objects.all()
     content = {"title": title, "visit_date": visit_date, "locations": locations}
     return render(request, "mainapp/contacts.html", content)
-    
