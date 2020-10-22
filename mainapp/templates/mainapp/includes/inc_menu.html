@@ -12,7 +12,7 @@
         </a>
     </li>
     <li>
-        <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
+        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
             контакты
         </a>
     </li>
@@ -21,6 +21,11 @@
         <a href="{% url 'auth:edit' %}">
             {{ user.first_name|default:'Пользователь' }}
         </a>
+    </li>
+    {% endif %}
+    {% if user.is_superuser %}
+    <li>
+        <a href="{% url 'admin:users' %}">админка</a>
     </li>
     {% endif %}
     <li>
@@ -35,7 +40,7 @@
 <a href="{% url 'basket:view' %}" class="basket">
     <span>
         {% if basket %}
-            {{ basket.0.total_cost|floatformat:0 }} руб ({{ basket.0.total_quantity }} шт)
+        {{ basket.0.total_cost|floatformat:0 }} руб ({{ basket.0.total_quantity }} шт)
         {% endif %}
     </span>
 </a>
