@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/home/lex/Desktop/venv/bin/python",
-    "editor.fontSize": 18
+    "python.pythonPath": "/home/lex/.pyenv/versions/3.8.6/envs/Django_shop/bin/python",
+    "editor.fontSize": 14
 }
