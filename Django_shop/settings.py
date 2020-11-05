@@ -69,6 +69,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "mainapp.context_processors.basket",
             ],
         },
     },
@@ -155,8 +156,8 @@ EMAIL_USE_SSL = False
 # If server support TLS:
 # EMAIL_USE_TLS = True
 
-# EMAIL_HOST_USER = "django@geekshop.local"
-# EMAIL_HOST_PASSWORD = "geekshop"
+# EMAIL_HOST_USER = "django@DJango_shop.local"
+# EMAIL_HOST_PASSWORD = "Django_shop"
 # For debugging: python -m smtpd -n -c DebuggingServer localhost:25
 EMAIL_HOST_USER = None
 EMAIL_HOST_PASSWORD = None
