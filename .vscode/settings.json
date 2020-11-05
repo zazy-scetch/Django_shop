@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/home/lex/.pyenv/versions/Django_shop/bin/python3.8",
+    "python.pythonPath": "/home/lex/.pyenv/versions/3.8.6/envs/Django_shop/bin/python",
     "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
     "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
