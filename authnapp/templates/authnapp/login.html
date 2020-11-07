@@ -22,5 +22,10 @@
         Вход через <i class="fa fa-vk" aria-hidden="true"></i>
     </a>
 </button>
+<button class="btn btn-round form-control">
+    <a href="{% url 'social:begin' 'github' %}?next=/">
+        Вход через <i class="fa fa-git" aria-hidden="true"></i>
+    </a>
+</button>
 
 {% endblock content %}
