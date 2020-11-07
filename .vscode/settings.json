@@ -1,4 +1,19 @@
 {
-    "python.pythonPath": "/home/lex/Desktop/venv/bin/python",
-    "editor.fontSize": 18
+    "python.pythonPath": "/home/lex/.pyenv/versions/3.8.6/envs/Django_shop/bin/python",
+    "editor.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
+    "editor.fontSize": 14,
+    "terminal.integrated.fontFamily": "'JetBrains Mono', Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontSize": 14,
+    "python.languageServer": "Pylance",
+    "explorer.autoReveal": false,
+    "python.formatting.blackArgs": [
+        "-l 120"
+    ],
+    "python.formatting.provider": "black",
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": false,
+    "python.linting.pylintArgs": [
+        "--load-plugins",
+        "pylint_django"
+    ]
 }

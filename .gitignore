@@ -216,3 +216,9 @@ fabric.properties
 
 # Local History for Visual Studio Code
 .history/
+
+# Django_shop --->
+
+tmp
+
+# <--- Django_shop
