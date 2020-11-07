@@ -219,6 +219,7 @@ fabric.properties
 
 # Django_shop --->
 
+.secrets
 tmp
 
 # <--- Django_shop
