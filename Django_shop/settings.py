@@ -25,7 +25,7 @@ SECRET_KEY = "e5#53zneb2fzjf6(hjlq@uav2kmibyge06z^3_+g%9*y(-_pn7"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["zazy.pythonanywhere.com"]
 
 
 # Application definition
@@ -93,19 +93,10 @@ WSGI_APPLICATION = "Django_shop.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-
-# Change database to PostgreSQL
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    # }
     "default": {
-        "NAME": "geekshop",
-        "ENGINE": "django.db.backends.postgresql",
-        "USER": "django",
-        "PASSWORD": "geekbrains",
-        "HOST": "localhost",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
@@ -150,20 +141,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = "/static/"
-
-# In common case STATIC_ROOT can not be in STATICFILES_DIRS
-if DEBUG:
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-else:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-
-# Media files
-MEDIA_URL = "/media/"
-
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+MEDIA_ROOT = os.path.join(PROJECT_PATH, "media")
+MEDIA_URL = '/media/'
+STATIC_ROOT = os.path.join(PROJECT_PATH, "static")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, "dev_static"),
+)
 # Set login path:
 #   https://docs.djangoproject.com/en/2.2/ref/settings/#login-url
 LOGIN_URL = "authnapp:login"
@@ -202,21 +187,20 @@ AUTHENTICATION_BACKENDS = (
 SOCIAL_AUTH_URL_NAMESPACE = "social"
 
 # You can save settings in file, but not in GIT!
-# SOCIAL_AUTH_VK_OAUTH2_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-# SOCIAL_AUTH_VK_OAUTH2_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+SOCIAL_AUTH_VK_OAUTH2_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 # Load settings from file
-with open(".secrets/vk.json", "r") as f:
-    VK = json.load(f)
+#with open(".secrets/vk.json", "r") as f:
+    #VK = json.load(f)
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = VK["SOCIAL_AUTH_VK_OAUTH2_APPID"]
-SOCIAL_AUTH_VK_OAUTH2_SECRET = VK["SOCIAL_AUTH_VK_OAUTH2_KEY"]
+#SOCIAL_AUTH_VK_OAUTH2_KEY = VK["SOCIAL_AUTH_VK_OAUTH2_APPID"]
+#SOCIAL_AUTH_VK_OAUTH2_SECRET = VK["SOCIAL_AUTH_VK_OAUTH2_KEY"]
+#with open(".secrets/git.json", "r") as f:
+    #GH = json.load(f)
 
-with open(".secrets/git.json", "r") as f:
-    GH = json.load(f)
-
-SOCIAL_AUTH_GITHUB_KEY = GH["SOCIAL_AUTH_GITHUB_KEY"]
-SOCIAL_AUTH_GITHUB_SECRET = GH["SOCIAL_AUTH_GITHUB_SECRET"]
+#SOCIAL_AUTH_GITHUB_KEY = GH["SOCIAL_AUTH_GITHUB_KEY"]
+#SOCIAL_AUTH_GITHUB_SECRET = GH["SOCIAL_AUTH_GITHUB_SECRET"]
 
 LOGIN_ERROR_URL = "/"
 
@@ -236,3 +220,5 @@ SOCIAL_AUTH_PIPELINE = (
     "social_core.pipeline.social_auth.load_extra_data",
     "social_core.pipeline.user.user_details",
 )
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
