@@ -6,14 +6,12 @@
 <div class="slider">
     <div class="header clearfix">
         {% include 'mainapp/includes/inc_menu.html' %}
-        <a href="#" class="search"></a>
-        <a href="#" class="basket"></a>
     </div>
     <div class="text-slider">
         <h3 class="green">тенденции</h3>
         <h3 class="big"> удобные стулья</h3>
         <p>Новый уровень комфорта. Отличные характеристики.</p>
-        <a href="#" class="button-order">
+        <a href="{% url 'products:index' %}" class="button-order">
             заказать
             <img src="{% static 'img/arrow.png' %}" alt="">
         </a>
@@ -36,7 +34,8 @@
     <div class="tab-content">
         {% for product in products %}
         <div class="block">
-            <a href="{{ product.image }}"><img src="{{ media_url }}{{ product.image }}" alt="{{ product.short_desc }}">
+            <a href="{% url 'products:product' product.pk %}"><img src="{{ media_url }}{{ product.image }}"
+                    alt="{{ product.short_desc }}">
                 <div class="text">
                     <img src="{% static 'img/icon-hover.png' %}" alt="img">
                     <h4>{{ product.name }}</h4>
@@ -49,4 +48,23 @@
 </div>
 
 <div class="clr"></div>
+
+<div style="display: none;">
+    <ul>
+        {% comment %}
+        <li>{{ fact.get_factorial }}</li>
+        <li>{{ fact.get_factorial }}</li>
+        <li>{{ fact.get_factorial }}</li>
+        <li>{{ fact.get_factorial }}</li>
+        
+        {% with temp_fact=fact.get_factorial %}
+        <li>{{ temp_fact }}</li>
+        <li>{{ temp_fact }}</li>
+        <li>{{ temp_fact }}</li>
+        <li>{{ temp_fact }}</li>
+        {% endwith %}
+
+        {% endcomment %}
+    </ul>
+</div>
 {% endblock %}
