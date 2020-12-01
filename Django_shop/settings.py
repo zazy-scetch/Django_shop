@@ -56,7 +56,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 AUTH_USER_MODEL = "authnapp.ShopUser"
 
 MIDDLEWARE = [
-    "django.middleware.cache.UpdateCacheMiddleware",  # for entire site caching
+   # "django.middleware.cache.UpdateCacheMiddleware",  # for entire site caching
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -66,7 +66,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "social_django.middleware.SocialAuthExceptionMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "django.middleware.cache.FetchFromCacheMiddleware",  # for entire site caching
+    #"django.middleware.cache.FetchFromCacheMiddleware",  # for entire site caching
    ]
 
 ROOT_URLCONF = "Django_shop.urls"
