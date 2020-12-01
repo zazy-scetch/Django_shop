@@ -14,8 +14,6 @@ from mainapp.models import Product
 from ordersapp.forms import OrderItemForm
 from ordersapp.models import Order, OrderItem
 
-from django.db.models import F
-
 
 class OrderList(LoginRequiredMixin, ListView):
     model = Order
@@ -133,14 +131,34 @@ def order_forming_complete(request, pk):
 @receiver(pre_save, sender=Basket)
 def product_quantity_update_save(instance, sender, **kwargs):
     if instance.pk:
-        instance.product.quantity = F("quantity") - (instance.quantity - sender.get_item(instance.pk).quantity)
+        instance.product.quantity -= instance.quantity - sender.get_item(instance.pk).quantity
     else:
-        instance.product.quantity = F("quantity") - instance.quantity
+        instance.product.quantity -= instance.quantity
     instance.product.save()
+    # quantity_total = instance.product.reserved + instance.product.quantity
+    # quantity_delta = quantity_total - instance.quantity
+    # if quantity_delta < 0:
+    #     instance.product.reserved = quantity_total
+    #     instance.quantity = instance.product.reserved
+    # else:
+    #     instance.product.reserved = instance.quantity
+    #     instance.product.quantity = quantity_delta
+    # instance.product.save()
 
 
 @receiver(pre_delete, sender=OrderItem)
 @receiver(pre_delete, sender=Basket)
 def product_quantity_update_delete(instance, **kwargs):
-    instance.product.quantity = F("quantity") + instance.quantity
+    instance.product.quantity += instance.product.reserved
+    instance.product.reserved = 0
     instance.product.save()
+
+
+def get_product_price(request, pk):
+    if request.is_ajax():
+        product = Product.objects.filter(pk=int(pk)).first()
+        if product:
+            return JsonResponse({"price": product.price})
+        else:
+            return JsonResponse({"price": 0})
+
